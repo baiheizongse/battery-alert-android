@@ -188,7 +188,11 @@ fun BatteryAlertScreen(
                 Column(
                     modifier = Modifier.verticalScroll(rememberScrollState())
                 ) {
-                    Text("バッテリー通知 v1.0.1")
+                    Text("Battery Speaking Alert v1.0.2")
+                    Text(
+                        "声で充電お知らせ",
+                        style = MaterialTheme.typography.bodySmall
+                    )
                     Text(
                         "バッテリー残量が指定した%に達すると、音声でお知らせするアプリです。",
                         style = MaterialTheme.typography.bodySmall

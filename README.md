@@ -1,4 +1,4 @@
-# Battery Alert（バッテリー通知アプリ）
+# Battery Speaking Alert（声で充電お知らせ）
 
 バッテリー残量が指定した%に達すると、**音声で**知らせてくれる Android アプリです。
 
@@ -10,7 +10,7 @@
 
 ## English
 
-**Battery Alert** is an Android app that speaks aloud when the battery level reaches a set percentage.
+**Battery Speaking Alert** is an Android app that speaks aloud when the battery level reaches a set percentage.
 
 ### Why I made it
 
@@ -45,7 +45,7 @@ MIT License. See [LICENSE](LICENSE).
 
 ## 中文
 
-**Battery Alert（电池提醒）** 是一款 Android 应用，当电量达到设定百分比时，会用**语音**提醒你。
+**Battery Speaking Alert（语音充电提醒）** 是一款 Android 应用，当电量达到设定百分比时，会用**语音**提醒你。
 
 ### 开发原因
 
@@ -80,7 +80,7 @@ MIT License。详见 [LICENSE](LICENSE)。
 
 ## 日本語
 
-**バッテリー通知**は、バッテリー残量が指定した%に達すると**音声で**知らせてくれる Android アプリです。
+**声で充電お知らせ**（Battery Speaking Alert）は、バッテリー残量が指定した%に達すると**音声で**知らせてくれる Android アプリです。
 
 ### 作った理由
 
