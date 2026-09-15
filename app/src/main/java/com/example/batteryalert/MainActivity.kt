@@ -21,12 +21,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.getValue
@@ -119,6 +124,7 @@ fun BatteryAlertScreen(
 ) {
     var thresholdText by remember { mutableStateOf("20") }
     var monitoring by remember { mutableStateOf(false) }
+    var showAbout by remember { mutableStateOf(false) }
     val threshold = thresholdText.toIntOrNull() ?: 20
 
     Scaffold(modifier = Modifier.fillMaxSize()) { padding ->
@@ -163,10 +169,63 @@ fun BatteryAlertScreen(
                 Text("テスト通知・音声を再生")
             }
 
+            OutlinedButton(onClick = { showAbout = true }, modifier = Modifier.fillMaxWidth()) {
+                Text("このアプリについて")
+            }
+
             Text(
                 text = "指定した%に達すると、通知＋音声でお知らせします（上がっても下がっても）。",
                 style = MaterialTheme.typography.bodySmall
             )
         }
+    }
+
+    if (showAbout) {
+        AlertDialog(
+            onDismissRequest = { showAbout = false },
+            title = { Text("このアプリについて") },
+            text = {
+                Column(
+                    modifier = Modifier.verticalScroll(rememberScrollState())
+                ) {
+                    Text("バッテリー通知 v1.0.1")
+                    Text(
+                        "バッテリー残量が指定した%に達すると、音声でお知らせするアプリです。",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+
+                    Spacer(Modifier.height(12.dp))
+                    Text("オープンソースライセンス", style = MaterialTheme.typography.titleSmall)
+                    Text(
+                        "本アプリは以下のオープンソースソフトウェアを使用しています。",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+
+                    Spacer(Modifier.height(8.dp))
+                    Text("・AndroidX — Apache License 2.0")
+                    Text("・Jetpack Compose — Apache License 2.0")
+                    Text("・Kotlin — Apache License 2.0")
+
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        "Apache License 2.0 の全文:",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    Text(
+                        "https://www.apache.org/licenses/LICENSE-2.0",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+
+                    Spacer(Modifier.height(12.dp))
+                    Text(
+                        "本アプリ自体は MIT License で公開しています。",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showAbout = false }) { Text("閉じる") }
+            }
+        )
     }
 }
